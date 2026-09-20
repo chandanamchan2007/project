@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riverside City Park</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f4ec;
+    color: #222;
+  }
+  header {
+    background-color: #3a6b35;
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 26px;
+  }
+  header p {
+    margin-top: 5px;
+  }
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    color: #3a6b35;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #3a6b35;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  button:hover {
+    background-color: #2c5228;
+  }
+  .msg {
+    display: none;
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+  footer {
+    text-align: center;
+    padding: 15px;
+    color: #666;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Riverside City Park</h1>
+  <p>Open daily, sunrise to sunset</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Park Hours</h2>
+    <p><strong>Open:</strong> 6:00 AM – 9:00 PM daily</p>
+    <p><strong>Address:</strong> 500 Greenway Drive, Riverside</p>
+    <p><strong>Parking:</strong> Free lot at the main entrance</p>
+  </div>
+
+  <div class="card">
+    <h2>What's Here</h2>
+    <ul>
+      <li>Walking and biking trails (3 miles)</li>
+      <li>Children's playground</li>
+      <li>Picnic areas with grills</li>
+      <li>Basketball and tennis courts</li>
+      <li>Dog park (off-leash area)</li>
+      <li>Public restrooms</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Reserve a Picnic Shelter</h2>
+    <form id="reserveForm">
+      <label>Full Name</label>
+      <input type="text" id="name">
+
+      <label>Phone Number</label>
+      <input type="tel" id="phone">
+
+      <label>Date</label>
+      <input type="date" id="date">
+
+      <label>Shelter</label>
+      <select>
+        <option>Shelter A (up to 20 people)</option>
+        <option>Shelter B (up to 40 people)</option>
+        <option>Shelter C (up to 60 people)</option>
+      </select>
+
+      <button type="button" id="reserveBtn">Request Reservation</button>
+      <div class="msg" id="confirm">Request sent. We'll confirm by phone within 2 days.</div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Park Rules</h2>
+    <ul>
+      <li>Dogs must be leashed except in the dog park</li>
+      <li>No alcohol without a permit</li>
+      <li>Pack out all trash</li>
+      <li>Quiet hours after 9 PM</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>© 2026 Riverside City Park</footer>
+
+<script>
+  document.getElementById('reserveBtn').addEventListener('click', function() {
+    document.getElementById('confirm').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

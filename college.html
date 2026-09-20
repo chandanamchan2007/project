@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riverside College</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f2ec;
+    color: #222;
+  }
+  header {
+    background-color: #4b2e83;
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 26px;
+  }
+  header p {
+    margin-top: 5px;
+  }
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    color: #4b2e83;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td, th {
+    text-align: left;
+    padding: 8px 6px;
+    border-bottom: 1px solid #ddd;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #4b2e83;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  button:hover {
+    background-color: #3a2266;
+  }
+  .msg {
+    display: none;
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+  footer {
+    text-align: center;
+    padding: 15px;
+    color: #666;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Riverside College</h1>
+  <p>Now accepting applications for Fall 2027</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>About Riverside College</h2>
+    <p>Riverside College offers undergraduate and certificate programs across business, science, arts, and technology, with small class sizes and a focus on hands-on learning.</p>
+  </div>
+
+  <div class="card">
+    <h2>Programs Offered</h2>
+    <table>
+      <tr><th>Program</th><th>Duration</th></tr>
+      <tr><td>Business Administration</td><td>4 years</td></tr>
+      <tr><td>Computer Science</td><td>4 years</td></tr>
+      <tr><td>Nursing</td><td>4 years</td></tr>
+      <tr><td>Graphic Design</td><td>2 years</td></tr>
+      <tr><td>Culinary Arts</td><td>1 year certificate</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Campus Facilities</h2>
+    <ul>
+      <li>Main library, open until midnight</li>
+      <li>Science and computer labs</li>
+      <li>Student center and cafeteria</li>
+      <li>Gym and sports fields</li>
+      <li>On-campus housing</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Apply Now</h2>
+    <form id="applyForm">
+      <label>Full Name</label>
+      <input type="text" id="name">
+
+      <label>Email</label>
+      <input type="email" id="email">
+
+      <label>Phone Number</label>
+      <input type="tel" id="phone">
+
+      <label>Program of Interest</label>
+      <select>
+        <option>Business Administration</option>
+        <option>Computer Science</option>
+        <option>Nursing</option>
+        <option>Graphic Design</option>
+        <option>Culinary Arts</option>
+      </select>
+
+      <button type="button" id="applyBtn">Submit Application</button>
+      <div class="msg" id="confirm">Application received. Admissions will contact you within 5 business days.</div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <p><strong>Admissions Office:</strong> (555) 234-8899</p>
+    <p><strong>Email:</strong> admissions@riversidecollege.example</p>
+    <p><strong>Address:</strong> 200 College Ave, Riverside</p>
+  </div>
+
+</div>
+
+<footer>© 2026 Riverside College</footer>
+
+<script>
+  document.getElementById('applyBtn').addEventListener('click', function() {
+    document.getElementById('confirm').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

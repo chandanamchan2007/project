@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Family Clinic</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root{
+    --bg: #F1F3EC;
+    --panel: #FFFFFF;
+    --ink: #1B241F;
+    --ink-soft: #4B5750;
+    --teal: #1C3D3A;
+    --teal-deep: #122825;
+    --brick: #C1553B;
+    --brick-deep: #A7442C;
+    --gold: #D9A24B;
+    --line: #DCE2D8;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.55;
+  }
+  h1,h2,h3{
+    font-family: 'Lora', serif;
+    color: var(--teal-deep);
+    margin: 0 0 .4em 0;
+    line-height: 1.2;
+  }
+  a{ color: inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width: 1120px; margin:0 auto; padding: 0 28px; }
+
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(241,243,236,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Lora', serif; font-weight:600; font-size:1.25rem;
+    color: var(--teal-deep);
+  }
+  .brand-mark{
+    width: 34px; height:34px; border-radius: 8px;
+    background: var(--teal);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .brand-mark svg{ width:18px; height:18px; }
+  nav.links{ display:flex; gap: 28px; }
+  nav.links a{
+    text-decoration:none; font-size: 0.95rem; color: var(--ink-soft);
+    font-weight:500;
+  }
+  nav.links a:hover{ color: var(--teal); }
+  .nav-cta{
+    background: var(--brick); color:#fff; border:none;
+    padding: 10px 20px; border-radius: 6px; font-weight:600;
+    font-size: 0.92rem; cursor:pointer; text-decoration:none;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .nav-cta:hover{ background: var(--brick-deep); }
+  .menu-toggle{ display:none; background:none; border:none; cursor:pointer; }
+
+  .hero{ padding: 76px 0 60px; }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items:center;
+  }
+  .eyebrow-note{
+    color: var(--brick); font-weight:600; font-size:0.95rem; margin-bottom: 14px;
+  }
+  .hero h1{ font-size: 2.7rem; max-width: 12ch; }
+  .hero p.lead{
+    color: var(--ink-soft); font-size: 1.08rem; max-width: 46ch; margin-top: 18px;
+  }
+  .hero-actions{ display:flex; gap:14px; margin-top: 28px; flex-wrap:wrap; }
+  .btn-primary{
+    background: var(--teal); color:#fff; border:none; padding: 13px 26px;
+    border-radius:6px; font-weight:600; font-size:0.98rem; cursor:pointer;
+    text-decoration:none; display:inline-block;
+  }
+  .btn-primary:hover{ background: var(--teal-deep); }
+  .btn-ghost{
+    border: 1.5px solid var(--teal); color: var(--teal); background:none;
+    padding: 13px 26px; border-radius:6px; font-weight:600; font-size:0.98rem;
+    cursor:pointer; text-decoration:none; display:inline-block;
+  }
+  .btn-ghost:hover{ background: var(--panel); }
+
+  .hero-strip{ margin-top: 40px; display:flex; gap: 34px; flex-wrap:wrap; }
+  .hero-strip div{ border-left: 2px solid var(--gold); padding-left: 14px; }
+  .hero-strip strong{ display:block; font-family:'Lora',serif; font-size:1.5rem; color:var(--teal-deep); }
+  .hero-strip span{ color: var(--ink-soft); font-size:0.88rem; }
+
+  .booking-card{
+    background: var(--panel); border-radius: 14px; padding: 32px;
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 40px -28px rgba(18,40,37,0.35);
+  }
+  .booking-card h3{ font-size:1.3rem; }
+  .booking-card p{ color: var(--ink-soft); font-size:0.92rem; margin-top:-6px; margin-bottom: 20px; }
+  .field{ margin-bottom: 16px; }
+  .field label{ display:block; font-size:0.85rem; font-weight:600; color: var(--ink); margin-bottom: 6px; }
+  .field input, .field select{
+    width:100%; padding: 11px 12px; border-radius:7px; border: 1px solid var(--line);
+    font-family:'IBM Plex Sans',sans-serif; font-size:0.95rem; background:#FBFBF9;
+  }
+  .field input:focus, .field select:focus{ outline: 2px solid var(--teal); outline-offset:1px; }
+  .field-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .submit-btn{
+    width:100%; background: var(--brick); color:#fff; border:none; padding: 13px;
+    border-radius:7px; font-weight:600; font-size:1rem; cursor:pointer; margin-top: 6px;
+  }
+  .submit-btn:hover{ background: var(--brick-deep); }
+  .form-note{ font-size: 0.8rem; color: var(--ink-soft); margin-top: 12px; text-align:center; }
+  .confirm-msg{
+    display:none; background: #EAF2E4; border: 1px solid #BFD9AC; color: #2E4D22;
+    padding: 14px; border-radius: 8px; font-size: 0.92rem; margin-top: 14px;
+  }
+
+  section{ padding: 72px 0; }
+  .section-head{ max-width: 56ch; margin-bottom: 44px; }
+  .section-head .kicker{ color: var(--brick); font-weight:600; font-size:0.92rem; margin-bottom:8px; }
+  .section-head h2{ font-size: 2rem; }
+  .section-head p{ color: var(--ink-soft); margin-top: 10px; }
+
+  .services-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .service-item{
+    padding: 26px 22px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line);
+  }
+  .service-item:nth-child(3n){ border-right:none; }
+  .service-item .num{ font-family:'Lora',serif; color: var(--gold); font-size: 1.1rem; font-weight:600; }
+  .service-item h3{ font-size: 1.12rem; margin-top: 6px; }
+  .service-item p{ color: var(--ink-soft); font-size:0.92rem; margin-top:6px; }
+
+  .doctors-strip{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .doctor-card{
+    background: var(--panel); border-radius: 12px; overflow:hidden; border:1px solid var(--line);
+  }
+  .doctor-photo{
+    height: 190px; background: var(--teal); display:flex; align-items:center; justify-content:center;
+  }
+  .doctor-photo svg{ width:56px; height:56px; opacity:0.85; }
+  .doctor-info{ padding: 16px 18px 20px; }
+  .doctor-info h3{ font-size: 1.02rem; margin-bottom:2px; }
+  .doctor-info .role{ color: var(--brick); font-size:0.85rem; font-weight:600; }
+  .doctor-info p{ color: var(--ink-soft); font-size:0.86rem; margin-top:8px; }
+
+  .contact-section{ background: var(--teal-deep); color: #EDF1EC; }
+  .contact-section h2{ color:#fff; }
+  .contact-grid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+  .contact-block h3{ color: var(--gold); font-size:1rem; margin-bottom: 14px; font-family:'IBM Plex Sans',sans-serif; font-weight:600; }
+  .hours-row{ display:flex; justify-content:space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-size:0.92rem; }
+  .contact-block p, .contact-block a{ color: #C9D3C8; font-size:0.94rem; text-decoration:none; }
+  .emergency-box{
+    background: rgba(193,85,59,0.18); border: 1px solid rgba(193,85,59,0.4);
+    padding: 16px; border-radius: 8px; margin-top:6px;
+  }
+  .emergency-box strong{ color: #F0B39F; font-size: 1.3rem; display:block; font-family:'Lora',serif; }
+
+  footer{ padding: 28px 0; text-align:center; color: var(--ink-soft); font-size:0.85rem; }
+
+  @media (max-width: 880px){
+    nav.links{ display:none; }
+    .menu-toggle{ display:block; }
+    .hero-grid{ grid-template-columns: 1fr; }
+    .services-grid{ grid-template-columns: 1fr 1fr; }
+    .service-item:nth-child(3n){ border-right:1px solid var(--line); }
+    .service-item:nth-child(2n){ border-right:none; }
+    .doctors-strip{ grid-template-columns: 1fr 1fr; }
+    .contact-grid{ grid-template-columns: 1fr; gap: 30px; }
+    .hero h1{ font-size: 2.1rem; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#F1F3EC" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </span>
+      Meridian Family Clinic
+    </div>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#hours">Hours &amp; Location</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#book" class="nav-cta">Book a visit</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-note">Now accepting new patients</div>
+      <h1>Care that starts with listening.</h1>
+      <p class="lead">Meridian is a family clinic offering same-week appointments, a full-time on-site lab, and a team that actually remembers your name. Walk-ins welcome for urgent concerns.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn-primary">Book an appointment</a>
+        <a href="tel:+15551234567" class="btn-ghost">Call (555) 123-4567</a>
+      </div>
+      <div class="hero-strip">
+        <div><strong>18</strong><span>Physicians &amp; specialists</span></div>
+        <div><strong>7 AM–9 PM</strong><span>Daily, including weekends</span></div>
+        <div><strong>24/7</strong><span>Emergency line</span></div>
+      </div>
+    </div>
+
+    <div class="booking-card" id="book">
+      <h3>Request an appointment</h3>
+      <p>We'll call to confirm a time within one business day.</p>
+      <form id="appointmentForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" required>
+          </div>
+          <div class="field">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" required>
+        </div>
+        <div class="field">
+          <label for="dept">Reason for visit</label>
+          <select id="dept">
+            <option>General check-up</option>
+            <option>Pediatrics</option>
+            <option>Cardiology</option>
+            <option>Dermatology</option>
+            <option>Orthopedics</option>
+            <option>Something urgent</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pref-date">Preferred date</label>
+          <input type="date" id="pref-date">
+        </div>
+        <button type="submit" class="submit-btn">Request appointment</button>
+        <div class="form-note">No account needed. We'll text you a confirmation.</div>
+        <div class="confirm-msg" id="confirmMsg">Request received — our front desk will call you shortly to confirm your time.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What we treat</div>
+      <h2>Care across every stage of life</h2>
+      <p>From routine physicals to specialist referrals, our departments work together so you're not repeating your history at every door.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-item"><div class="num">01</div><h3>Primary Care</h3><p>Annual physicals, vaccinations, and ongoing management of chronic conditions.</p></div>
+      <div class="service-item"><div class="num">02</div><h3>Pediatrics</h3><p>Well-child visits, developmental screening, and same-day sick appointments.</p></div>
+      <div class="service-item"><div class="num">03</div><h3>Cardiology</h3><p>ECGs, stress testing, and long-term heart health monitoring on-site.</p></div>
+      <div class="service-item"><div class="num">04</div><h3>Dermatology</h3><p>Skin checks, mole mapping, and treatment for chronic skin conditions.</p></div>
+      <div class="service-item"><div class="num">05</div><h3>Orthopedics</h3><p>Sports injuries, joint pain, and physical therapy referrals.</p></div>
+      <div class="service-item"><div class="num">06</div><h3>Diagnostic Lab</h3><p>Bloodwork and imaging with results usually back within 24 hours.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="doctors" style="background: var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Our team</div>
+      <h2>Physicians you'll actually get to know</h2>
+      <p>Every patient is assigned a primary physician who coordinates their care across departments.</p>
+    </div>
+    <div class="doctors-strip">
+      <div class="doctor-card">
+        <div class="doctor-photo"><svg viewBox="0 0 24 24" fill="#F1F3EC"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+        <div class="doctor-info"><h3>Dr. Amara Osei</h3><div class="role">Family Medicine</div><p>15 years in practice, focused on preventive care.</p></div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-photo"><svg viewBox="0 0 24 24" fill="#F1F3EC"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+        <div class="doctor-info"><h3>Dr. Rohan Mehta</h3><div class="role">Pediatrics</div><p>Specializes in early childhood development.</p></div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-photo"><svg viewBox="0 0 24 24" fill="#F1F3EC"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+        <div class="doctor-info"><h3>Dr. Elena Cruz</h3><div class="role">Cardiology</div><p>Runs our on-site cardiac diagnostics program.</p></div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-photo"><svg viewBox="0 0 24 24" fill="#F1F3EC"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+        <div class="doctor-info"><h3>Dr. Samuel Achebe</h3><div class="role">Orthopedics</div><p>Works closely with our physical therapy partners.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hours" class="contact-section" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-block">
+      <h3>Hours</h3>
+      <div class="hours-row"><span>Monday – Friday</span><span>7:00 AM – 9:00 PM</span></div>
+      <div class="hours-row"><span>Saturday</span><span>8:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span>Sunday</span><span>9:00 AM – 3:00 PM</span></div>
+      <div class="emergency-box">
+        <strong>24/7 Emergency Line</strong>
+        <span>(555) 987-6543 — call before arriving if possible</span>
+      </div>
+    </div>
+    <div class="contact-block">
+      <h3>Location</h3>
+      <p>482 Willow Creek Road<br>Springfield, IL 62704</p>
+      <p style="margin-top:12px;">Free parking available on-site, accessible entrance on the north side.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Contact</h3>
+      <p><a href="tel:+15551234567">(555) 123-4567</a></p>
+      <p style="margin-top:8px;"><a href="mailto:frontdesk@meridianclinic.example">frontdesk@meridianclinic.example</a></p>
+      <p style="margin-top:8px;">Records requests and billing questions handled by phone, Mon–Fri.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 Meridian Family Clinic. This is a sample clinic website template.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('appointmentForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('confirmMsg').style.display = 'block';
+    this.querySelector('.submit-btn').textContent = 'Request sent ✓';
+    this.querySelector('.submit-btn').disabled = true;
+  });
+</script>
+
+</body>
+</html>
